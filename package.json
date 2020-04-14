@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage --config jest.config.js",
     "product": "webpack --mode production --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --mode development --config webpack.dev.config"
+    "dev": "webpack-dev-server --mode development --config webpack.dev.config",
+    "postversion": "git push --follow-tags"
   },
   "publishConfig": {
     "access": "public"
