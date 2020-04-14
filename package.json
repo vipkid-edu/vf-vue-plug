@@ -4,9 +4,12 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --config jest.config.js",
+    "test": "jest --coverage --config jest.config.js",
     "product": "webpack --mode production --config webpack.prod.config.js",
     "dev": "webpack-dev-server --mode development --config webpack.dev.config"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
