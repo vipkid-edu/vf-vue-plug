@@ -8,8 +8,7 @@ install:
   - npm ci
 script:
   - npm test
-  - echo "finish!."
-  - npm product
+  - npm run product
 deploy:
   provider: npm
   email: "haojenma@gmail.com"
