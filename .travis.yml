@@ -1,3 +1,16 @@
 language: node_js
 node_js:
   - 10
+branches:
+  only:
+    - master
+install:
+  - npm ci
+script:
+  - npm test
+  - echo "finish!."
+  - npm product
+deploy:
+  provider: npm
+  email: "haojenma@gmail.com"
+  api_key: "$NPM_TOKEN"
