@@ -15,7 +15,7 @@ module.exports = {
   //   ]
   // },
   output: {
-    path: path.resolve(__dirname, './output'),
+    path: path.resolve(__dirname, './dist'),
     libraryTarget: "umd",
     library: "vf",
     libraryExport: "default"
