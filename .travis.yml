@@ -18,7 +18,9 @@ script:
 #after_success:
 #  - npm run product
 before_deploy:
+  - ls
   - rm -rf coverage/
+  - ls
 deploy:
   provider: npm
   email: "$NPM_EMAIL"
