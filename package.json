@@ -2,7 +2,7 @@
   "name": "@vf.js/vue-plug",
   "version": "1.0.14",
   "description": "",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest --coverage --config jest.config.js",
     "product": "webpack --mode production --config webpack.prod.config.js",
