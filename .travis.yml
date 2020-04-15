@@ -21,13 +21,13 @@ deploy:
   api_token: "$NPM_TOKEN"
   cleanup: false
 
-#  on:
-#    tags: true
-#    branch: master
+  on:
+    tags: true
+    branch: master
 
-stages:
-  - name: before_deploy
-    if: branch = master AND tag IS present
-  - name: deploy
-    if: branch = master AND tag IS present
+#stages:
+#  - name: before_deploy
+#    if: branch = master AND tag IS present
+#  - name: deploy
+#    if: branch = master AND tag IS present
 
