@@ -1,8 +1,8 @@
 language: node_js
-branches:
-  only:
-    - master
-    - /v\d+\.\d+[a-z]/
+#branches:
+#  only:
+#    - master
+#    - /v\d+\.\d+[a-z]/
 node_js:
   - 10
 install:
