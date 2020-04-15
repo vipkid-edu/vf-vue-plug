@@ -12,22 +12,22 @@ script:
   - echo "$TRAVIS_EVENT_TYPE"
   - echo "$TRAVIS_TAG"
   - echo "$TRAVIS_BRANCH"
-  - echo "TRAVIS_BUILD_STAGE_NAME"
+  - echo "$TRAVIS_BUILD_STAGE_NAME"
 before_deploy:
   - npm run product
 deploy:
   provider: npm
   email: "$NPM_EMAIL"
-  api_key: "$NPM_TOKEN"
-  skip_cleanup: true
+  api_token: "$NPM_TOKEN"
+  cleanup: false
 
 #  on:
 #    tags: true
 #    branch: master
 
-#stages:
-#  - name: before_deploy
-#    if: branch = master AND tag IS present
-#  - name: deploy
-#    if: branch = master AND tag IS present
+stages:
+  - name: before_deploy
+    if: branch = master AND tag IS present
+  - name: deploy
+    if: branch = master AND tag IS present
 
