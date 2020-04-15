@@ -13,10 +13,11 @@ script:
   - echo "$TRAVIS_TAG"
   - echo "$TRAVIS_BRANCH"
   - echo "$TRAVIS_BUILD_STAGE_NAME"
+  - npm run product
+  #- if TSG = master
 #after_success:
 #  - npm run product
 before_deploy:
-  - npm run product
   - rm -rf coverage/
 deploy:
   provider: npm
