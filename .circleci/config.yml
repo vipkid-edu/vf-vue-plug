@@ -8,17 +8,14 @@ jobs:
     executor: init
     steps:
       - checkout
-      - run: npm install
+      - run: npm ci
       - run: npm test
     branches:
       only:
         - master
         - /v[0-9]+(\.[0-9]+).*/
-  deploy:
-    steps:
-      - run: echo "hi circleCI"
+
 workflows:
     build-and-test:
       jobs:
         - build-and-test
-        - deploy
