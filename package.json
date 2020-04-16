@@ -1,6 +1,6 @@
 {
   "name": "@vf.js/vue-plug",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
