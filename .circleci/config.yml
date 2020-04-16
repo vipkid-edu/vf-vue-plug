@@ -3,11 +3,12 @@ executors:
   init:
     docker:
       - image: "circleci/node:10.16.3"
+    steps:
+      - checkout
 jobs:
   build-and-test:
     executor: init
     steps:
-      - checkout
       - run: npm ci
       - run: npm test
   deploy:
