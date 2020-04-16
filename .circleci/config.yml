@@ -7,7 +7,7 @@ jobs:
   build-and-test:
     executor: init
     steps:
-#      - checkout
+      - checkout
       - run: npm ci
       - run: npm test
   deploy:
