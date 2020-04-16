@@ -1,18 +1,24 @@
 version: 2.1
-orbs:
-  node: circleci/node:latest
+executors:
+  init:
+    docker:
+      - image: "circleci/node:10.16.3"
 jobs:
   build-and-test:
-    executor:
-      name: node/default
-      tag: '10.4'
+    executor: init
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+      - run: npm install
+      - run: npm test
+    branches:
+      only:
+        - master
+        - /v[0-9]+(\.[0-9]+).*/
+  deploy:
+    steps:
+      - run: echo "hi circleCI"
 workflows:
     build-and-test:
       jobs:
         - build-and-test
+        - deploy
