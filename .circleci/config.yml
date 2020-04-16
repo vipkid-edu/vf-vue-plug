@@ -7,15 +7,25 @@ jobs:
   build-and-test:
     executor: init
     steps:
-      - checkout
+#      - checkout
       - run: npm ci
       - run: npm test
+  deploy:
+    steps:
+      - run: npm run product
 workflows:
-    build-and-test:
+    build-test-and-deploy:
       jobs:
         - build-and-test:
             filters:
               branches:
                 only:
                   - master
+                  - /v[0-9]+(\.[0-9]+).*/
+        - deploy:
+            requires:
+              - build-and-test
+            filters:
+              tags:
+                only:
                   - /v[0-9]+(\.[0-9]+).*/
