@@ -1,8 +1,9 @@
 {
-  "name": "@vf.js/vue-plug",
+  "name": "@vf.js/vue",
   "version": "1.0.24",
   "description": "",
   "main": "dist/index.js",
+  "repository": "https://github.com/vipkid-edu/vf-vue",
   "scripts": {
     "test": "jest --coverage --config jest.config.js",
     "product": "webpack --mode production --config webpack.prod.config.js",
