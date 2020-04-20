@@ -65,9 +65,11 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
     },
-    extensions: ['*','.js', '.vue', '.json']
+    extensions: ['.js', '.vue', '.json']
   },
+  devtool: false,
   devServer: {
     host: '0.0.0.0', // can be overwritten by process.env.HOST // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-  },
+    disableHostCheck: true,
+  }
 }

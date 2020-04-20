@@ -1,19 +1,18 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-console.log(__dirname, '__dirname__dirname')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: {
     index: './src/index.js',
-    // 'index.min': './src/index.js'
+    'index.min': './src/index.js'
   },
-  // optimization: {
-  //   minimizer: [
-  //     new UglifyJsPlugin({
-  //       include: /\.min\.js$/,
-  //     })
-  //   ]
-  // },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /\.min\.js$/,
+      })
+    ]
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     libraryTarget: "umd",

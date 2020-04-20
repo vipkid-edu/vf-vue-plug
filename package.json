@@ -2,7 +2,7 @@
   "name": "@vf.js/vue",
   "version": "1.0.25",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "repository": "https://github.com/vipkid-edu/vf-vue",
   "scripts": {
     "test": "jest --coverage --config jest.config.js",
@@ -22,7 +22,7 @@
     "@vue/test-utils": "^1.0.0-beta.33",
     "autoprefixer": "9.1.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^25.3.0",
+    "babel-jest": "^25.4.0",
     "babel-loader": "^8.1.0",
     "css-loader": "1.0.0",
     "cssnano": "4.0.5",
@@ -31,7 +31,7 @@
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "4.3.1",
-    "jest": "^25.3.0",
+    "jest": "^25.4.0",
     "jest-canvas-mock": "^2.2.0",
     "node-sass": "4.9.2",
     "postcss-import": "12.0.0",
@@ -51,5 +51,8 @@
     "webpack-dev-server": "3.1.11"
   },
   "author": "haojenma",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@vf.js/launcher": "latest"
+  }
 }

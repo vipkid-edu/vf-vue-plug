@@ -3,12 +3,17 @@
 </template>
 
 <script>
+  import { createVF } from '@vf.js/launcher'
   const EVENT = {
     ready: 'ready',
     error: 'error',
     message: 'message',
     dispose: 'dispose',
-    sceneCreate: 'sceneCreate'
+    sceneCreate: 'sceneCreate',
+
+    //component custom event
+    vfCreated: 'vfCreated',
+    vfCreateErr: 'vfCreateErr'
   }
 
   export default {
@@ -21,10 +26,6 @@
       bgcolor: {
         type: String,
         default: '0xffffff'
-      },
-      engineVersion: {
-        type: String,
-        default: '0.1.0'
       },
       wmode: String,
       width: Number,
@@ -45,47 +46,9 @@
       showFPS: Boolean
     },
     methods: {
-      initEngine(option = {}) {
-        //错误计数
-        let errorLoadCount = 0;
-        function createVF() {
-          const vf = new VF(option);
-
-          //详细的接口，可搜索：IVFEngine -> EngineAPI
-          vf.onReady = option.onReady
-          vf.onError = option.onError
-          vf.onMessage = option.onMessage
-          vf.onDispose = option.onDispose
-          vf.onSceneCreate = option.onSceneCreate
-        }
-        function loadScript(index){
-          var cdn = option.vfvars.cdns.default;
-          var s = document.createElement('script');
-          s.async = false;
-          s.src = cdn[index] + '/vf/engine/vf-engine-v' + option.engineVersion + '/vf.js?v=' + option.fixVersion;
-          s.addEventListener('load', loadComplete, false);
-          s.addEventListener('error', loadError, false);
-          document.body.appendChild(s);
-        }
-        function loadComplete() {
-          removeEvent(this);
-          createVF();
-        }
-        function loadError() {
-          removeEvent(this);
-          if(errorLoadCount>3){
-            throw ' [LOG VF] vf.js load error';
-            return;
-          }
-          loadScript(1);
-          errorLoadCount++;
-        }
-        function removeEvent(thisObj){
-          thisObj.parentNode.removeChild(thisObj);
-          thisObj.removeEventListener('load', loadComplete, false);
-          thisObj.removeEventListener('error', loadError, false);
-        }
-        loadScript(0);
+      onCreateVFError(errMsg) {
+        console.log('create vf fail, please check you network', errMsg)
+        this.$emit(EVENT.vfCreateErr, errMsg)
       },
       log(message) {
         if (!this.debug) return
@@ -114,7 +77,7 @@
       },
     },
     mounted() {
-      this.initEngine({
+      const config = {
         id: this.id,
         src: this.src,
         play: this.play,
@@ -133,36 +96,16 @@
         maxTouches: this.maxTouches,
         orientation: this.orientation,
         container: this.$refs.vfContainer,
-        engineVersion: this.engineVersion,
         logAdvancedTrace: this.logAdvancedTrace,
-
-        onReady: this.onVFReady,
-        onError: this.onVFError,
-        onMessage: this.onVFMessage,
-        onDispose: this.onVFDispose,
-        onSceneCreate: this.onVFSceneCreate,
-
-        vfvars: {
-          cdns: {
-            default:[
-              'https://s.vipkidstatic.com/',
-              'https://s.vipkidresource.com/',
-            ],
-            image:[
-              'https://img.vipkidstatic.com/',
-              'https://img.vipkidresource.com/',
-            ],
-            media:[
-              'https://media.vipkidstatic.com/',
-              'https://media.vipkidresource.com/',
-            ],
-            wx:[
-              'https://wx.vipkidstatic.com/',
-              'https://wx.vipkidresource.com/',
-            ],
-          }
-        },
-      });
+      }
+      createVF(config, player => {
+        player.onReady = this.onVFReady
+        player.onError = this.onVFError
+        player.onDispose = this.onVFDispose
+        player.onMessage = this.onVFMessage
+        player.onSceneCreate = this.onVFSceneCreate
+        this.$emit(EVENT.vfCreated, player)
+      }, this.onCreateVFError)
     }
   }
 </script>
