@@ -3,6 +3,8 @@ vf 引擎 vue 插件，帮助你快速使用 vf
 
 [![Build Status](https://travis-ci.com/vipkid-edu/vf-vue.svg?branch=master)](https://travis-ci.com/vipkid-edu/vf-vue)
 [![Build Status](https://circleci.com/gh/vipkid-edu/vf-vue.svg?style=shield)](https://circleci.com/gh/vipkid-edu/vf-vue.svg?style=shield)
+<img src="https://img.shields.io/github/issues/vipkid-edu/vf-vue">
+<img src="https://img.shields.io/github/license/vipkid-edu/vf-vue">
 
 ## 安装
 
