@@ -7,17 +7,17 @@ vf 引擎 vue 插件，帮助你快速使用 vf
 ## 安装
 
 ```shell
-npm install @vf.js/vue-plug
+npm install @vf.js/vue
 ```
   
-## Use
+## 使用
 
 ```javascript
-import vfPlug from "@vf.js/vue-plug"
+import vfComponent from "@vf.js/vue"
 
 export default {
   components: {
-    vf: vfPlug
+    vf: vfComponent
   }
 }
 ```
@@ -26,9 +26,16 @@ export default {
 <template>
   <div>
     <!-- more config detail please check https://vipkid-edu.github.io/vf-docs/handbook/option.html -->
-    <vf :src="Your JSON data" :width="800" :height="600" @ready="Your event handle" @message="..." @error="..." @dispose="..."></vf>
+    <vf :src="Your JSON data" :width="800"  @ready="..." @message="..."></vf>
   </div>
-</template
+</template>
 ```
+
+## 组件事件
+**vfCreated**
+当 VF 创建成功后触发的事件，会传入一个 `vf` 对象，可以通过 `@vfCreated="handleCreated"` 监听获取
+
+**vfCreateErr**
+当 VF 创建失败后触发当事件, 会传入一个 `errorMessage`, 可以通过 `@vfCreateErr` 监听获取
 
   
