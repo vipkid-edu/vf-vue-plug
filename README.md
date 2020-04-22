@@ -8,7 +8,7 @@ VF 引擎 Vue 组件，帮助你快速使用 VF
 
 ## 安装
 
-```shell
+```shell script
 npm install @vf.js/vue
 ```
   
@@ -27,17 +27,19 @@ export default {
 ```html
 <template>
   <div>
-    <!-- more config detail please check https://vipkid-edu.github.io/vf-docs/handbook/option.html -->
     <vf :src="Your JSON data" :width="800"  @ready="..." @message="..."></vf>
   </div>
 </template>
 ```
+了解更多有关 VF 的配置信息，请移步: [VF 配置选项](https://vipkid-edu.github.io/vf-docs/handbook/option.html)
 
 ## 组件事件
-**vfCreated**
-当 VF 创建成功后触发的事件，会传入一个 `vf` 对象，可以通过 `@vfCreated="handleCreated"` 监听获取
+**onLoadSuccess**
 
-**vfCreateErr**
-当 VF 创建失败后触发当事件, 会传入一个 `errorMessage`, 可以通过 `@vfCreateErr` 监听获取
+当 VF 创建成功后触发的事件，会传入一个 `vf` 对象，可以通过 `@loadSuccess` 监听获取
+
+**onLoadFail**
+
+当 VF 创建失败后触发的事件, 会传入一个 `errorMessage`, 可以通过 `@loadFail` 监听获取
 
   

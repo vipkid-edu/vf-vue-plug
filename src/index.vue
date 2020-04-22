@@ -12,8 +12,8 @@
     sceneCreate: 'sceneCreate',
 
     //component custom event
-    vfCreated: 'vfCreated',
-    vfCreateErr: 'vfCreateErr'
+    loadSuccess: 'loadSuccess',
+    loadFail: 'loadFail'
   }
 
   export default {
@@ -23,10 +23,7 @@
         type: [String, Object],
       },
       debug: Boolean,
-      bgcolor: {
-        type: String,
-        default: '0xffffff'
-      },
+      bgcolor: String,
       wmode: String,
       width: Number,
       height: Number,
@@ -46,9 +43,9 @@
       showFPS: Boolean
     },
     methods: {
-      onCreateVFError(errMsg) {
+      onLoadFail(errMsg) {
         console.log('create vf fail, please check you network', errMsg)
-        this.$emit(EVENT.vfCreateErr, errMsg)
+        this.$emit(EVENT.loadFail, errMsg)
       },
       log(message) {
         if (!this.debug) return
@@ -104,8 +101,8 @@
         player.onDispose = this.onVFDispose
         player.onMessage = this.onVFMessage
         player.onSceneCreate = this.onVFSceneCreate
-        this.$emit(EVENT.vfCreated, player)
-      }, this.onCreateVFError)
+        this.$emit(EVENT.loadSuccess, player)
+      }, this.onLoadFail)
     }
   }
 </script>
