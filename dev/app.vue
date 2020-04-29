@@ -1,6 +1,6 @@
 <template>
     <div class="test-page">
-        <vf :src="vfjson" :debug="true"></vf>
+        <vf :src="vfjson"></vf>
     </div>
 </template>
 
