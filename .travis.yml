@@ -6,7 +6,7 @@ branches:
 node_js:
   - 10
 install:
-  - npm ci
+  - npm install
 script:
   - npm test
   - echo "$TRAVIS_EVENT_TYPE"
