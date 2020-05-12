@@ -14,7 +14,7 @@ script:
   - echo "$TRAVIS_BRANCH"
   - echo "$TRAVIS_BUILD_STAGE_NAME"
 before_deploy:
-  #- rm -rf coverage/
+  - rm -rf coverage/
   - npm run product
 deploy:
   provider: npm
