@@ -40,7 +40,8 @@
       vfvars: Object,
       orientation: String,
       maxTouches: Number,
-      showFPS: Boolean
+      showFPS: Boolean,
+      resolution: Number
     },
     methods: {
       onLoadFail(errMsg) {
@@ -91,6 +92,7 @@
         frameRate: this.frameRate,
         scaleMode: this.scaleMode,
         maxTouches: this.maxTouches,
+        resolution: this.resolution,
         orientation: this.orientation,
         container: this.$refs.vfContainer,
         logAdvancedTrace: this.logAdvancedTrace,
