@@ -1,5 +1,5 @@
 <template>
-    <main ref="vfContainer"></main>
+    <main ref="vfContainer" style="width: 100%; height: 100%;"></main>
 </template>
 
 <script>
